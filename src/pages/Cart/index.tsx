@@ -40,10 +40,12 @@ const Cart: React.FC = () => {
 
   function handleIncrement(id: string): void {
     // TODO
+    increment(id);
   }
 
   function handleDecrement(id: string): void {
     // TODO
+    decrement(id);
   }
 
   const cartTotal = useMemo(() => {
@@ -54,8 +56,9 @@ const Cart: React.FC = () => {
 
   const totalItensInCart = useMemo(() => {
     // TODO RETURN THE SUM OF THE QUANTITY OF THE PRODUCTS IN THE CART
+    const { length } = products;
 
-    return 0;
+    return length;
   }, [products]);
 
   return (

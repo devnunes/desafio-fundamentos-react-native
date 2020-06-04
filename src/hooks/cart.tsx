@@ -34,7 +34,7 @@ const CartProvider: React.FC = ({ children }) => {
       const cart = await AsyncStorage.getItem('@GoMarketplace:cart');
 
       if (cart) {
-        setProducts(JSON.parse(cart));
+        setProducts([...JSON.parse(cart)]);
       }
     }
 
@@ -48,10 +48,9 @@ const CartProvider: React.FC = ({ children }) => {
       const existProduct = products.findIndex(item => item.id === product.id);
 
       if (existProduct < 0) {
-        const productTobeAdd = { ...product, quantity: 1 };
-
-        setProducts([...products, productTobeAdd]);
+        setProducts([...products, { ...product, quantity: 1 }]);
       }
+
       if (existProduct >= 0) {
         const newProducts = products.map(item => {
           if (item.id === product.id) {
